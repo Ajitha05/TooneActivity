@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.content.Context;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -61,6 +60,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
                 i.putExtra("address",profile.getAddress());
                 i.putExtra("email",profile.getEmail());
                 i.putExtra("detail id",profile.getId());
+                i.putExtra("user id",user.getId());
                 view.getContext().startActivity(i);
 
 
