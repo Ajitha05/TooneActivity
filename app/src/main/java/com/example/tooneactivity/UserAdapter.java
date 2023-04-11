@@ -3,7 +3,6 @@ package com.example.tooneactivity;
 import static androidx.core.content.ContextCompat.startActivity;
 
 import android.content.Intent;
-import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.content.Context;
@@ -16,11 +15,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import org.greenrobot.greendao.annotation.Id;
+
 import java.util.List;
 
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
     List<User> userList;
+
 
 
 
@@ -41,6 +43,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull UserAdapter.ViewHolder holder, int position) {
         final User user = userList.get(position);
         holder.getName().setText(user.getName().trim());
+        holder.getId().setText(String.valueOf(user.getId()));
 
 
         holder.constraintLayout.setOnClickListener(new View.OnClickListener(){
@@ -57,9 +60,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
                 i.putExtra("address",profile.getAddress());
                 i.putExtra("email",profile.getEmail());
+                i.putExtra("detail id",profile.getId());
                 view.getContext().startActivity(i);
-
-
 
 
             }
@@ -80,18 +82,27 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             this.name = name;
 
         }
+        public void setId(TextView id) {
+            this.id = id;
+        }
+
 
         public TextView getName() {
             return name;
 
         }
+        public TextView getId() {
+            return id;
 
-        private TextView name;
+        }
+
+        private TextView name,id;
         public ConstraintLayout constraintLayout;
 
         public ViewHolder( View view) {
             super(view);
             this.name=(TextView) view.findViewById(R.id.labelItemName);
+            this.id =(TextView) view.findViewById(R.id.useridtv);
             constraintLayout=(ConstraintLayout) view.findViewById(R.id.itemrow);
 
         }

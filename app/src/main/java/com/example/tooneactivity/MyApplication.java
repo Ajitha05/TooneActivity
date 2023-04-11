@@ -8,7 +8,6 @@ import java.util.jar.Attributes;
 
 public class MyApplication extends Application {
     private DaoSession daoSession;
-    User user;
 
 
     @Override

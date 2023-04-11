@@ -7,7 +7,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class UserDetails extends AppCompatActivity {
-    TextView email,address;
+    TextView email,address,details_id;
 
 
     @Override
@@ -15,17 +15,26 @@ public class UserDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_details);
 
-        email=findViewById(R.id.textView);
-        address=findViewById(R.id.textView2);
+        email = findViewById(R.id.textView);
+        address = findViewById(R.id.textView2);
+        details_id =findViewById(R.id.textView4);
+
+
 
 
         Intent i = getIntent();
 
-        String t1 = i.getStringExtra("email").toString();
-        String t2 = i.getStringExtra("address").toString();
+        String t1 = i.getStringExtra("email");
+        String t2 = i.getStringExtra("address");
+        long t3 = i.getLongExtra("detail id", 0);
+
+
+
+
 
         email.setText(t1);
         address.setText(t2);
+       details_id.setText(String.valueOf(t3));
     }
 }
 
